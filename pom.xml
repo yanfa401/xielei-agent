@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.xielei</groupId>
+    <artifactId>xielei-agent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.21.0-GA</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifestFile>
+                            src/main/resources/META-INF/MANIFEST.MF
+                        </manifestFile>
+                        <!-- 可以使用该方式,也可以使用编写 META-INF/MANIFEST.MF文件,都行 -->
+                        <!--<manifestEntries>-->
+                        <!--<Premain-Class>com.git.hui.agent.SimpleAgent</Premain-Class>-->
+                        <!--<Agent-Class>com.git.hui.agent.SimpleAgent</Agent-Class>-->
+                        <!--<Can-Redefine-Classes>true</Can-Redefine-Classes>-->
+                        <!--<Can-Retransform-Classes>true</Can-Retransform-Classes>-->
+                        <!--</manifestEntries>-->
+                    </archive>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>attached</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
