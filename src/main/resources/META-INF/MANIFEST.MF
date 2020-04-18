@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Premain-Class: com.xielei.SimpleAgent
+Agent-Class: com.xielei.SimpleAgent
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true
